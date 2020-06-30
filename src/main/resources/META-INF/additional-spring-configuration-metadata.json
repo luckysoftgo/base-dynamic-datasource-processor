@@ -1,0 +1,69 @@
+{
+  "properties": [
+	{
+	  "name": "spring.datasource.dynamic.primary",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.cloud.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties",
+	  "description": "默认主数据库的设置."
+	},
+	{
+	  "name": "spring.datasource.dynamic.strict",
+	  "type": "java.lang.Boolean",
+	  "sourceType": "com.application.cloud.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties",
+	  "description": "是否启用严格模式,默认不启动.",
+	  "defaultValue": false
+	},
+	{
+	  "name": "spring.datasource.dynamic.p6spy",
+	  "type": "java.lang.Boolean",
+	  "sourceType": "com.application.cloud.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties",
+	  "description": "是否使用p6spy输出，默认不输出.",
+	  "defaultValue": false
+	},
+	{
+	  "name": "spring.datasource.dynamic.seata",
+	  "type": "java.lang.Boolean",
+	  "sourceType": "com.application.cloud.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties",
+	  "description": "是否使用seata,默认不使用.",
+	  "defaultValue": false
+	},
+	{
+	  "name": "spring.datasource.dynamic.health",
+	  "type": "java.lang.Boolean",
+	  "sourceType": "com.application.cloud.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties",
+	  "description": "是否使用spring actuator 监控检查，默认不检查.",
+	  "defaultValue": false
+	},
+    {
+	  "name": "spring.datasource.dynamic.datasource",
+	  "type": "java.util.Map",
+	  "sourceType": "com.application.cloud.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties",
+	  "description": "以key-value结构的数据源配置;key如:master,master1,master2...;value:为数据库的配置详细信息,详细查阅源码:DataSourceProperty类 中的配置."
+	},
+	{
+	  "name": "spring.datasource.dynamic.strategy",
+	  "type": "java.lang.Class",
+	  "sourceType": "com.application.cloud.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties",
+	  "description": "多数据源选择算法clazz，默认负载均衡算法.",
+	  "defaultValue": "com.baomidou.dynamic.datasource.strategy.LoadBalanceDynamicDataSourceStrategy"
+	},
+	{
+	  "name": "spring.datasource.dynamic.druid",
+	  "type": "com.application.cloud.dynamic.datasource.spring.boot.autoconfigure.druid.DruidConfig",
+	  "sourceType": "com.application.cloud.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties",
+	  "description": "Druid连接池全局参数配置,所有springboot 配置文件中的数据池都会加载druid的项."
+	},
+	{
+	  "name": "spring.datasource.dynamic.hikari",
+	  "type": "com.application.cloud.dynamic.datasource.spring.boot.autoconfigure.hikari.HikariCpConfig",
+	  "sourceType": "com.application.cloud.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties",
+	  "description": "HikariCp连接池全局参数配置."
+	},
+	{
+	  "name": "spring.datasource.dynamic.druid.*",
+	  "type": "java.lang.Object",
+	  "sourceType": "com.application.cloud.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties",
+	  "description": "阿里数据库连接池druid的详细配置."
+	}
+  ]
+}
