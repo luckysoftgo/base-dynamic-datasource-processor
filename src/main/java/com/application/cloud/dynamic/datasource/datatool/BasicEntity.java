@@ -30,7 +30,7 @@ public class BasicEntity implements Serializable,Cloneable {
 	public static String FIELD_ID = "id";
 	
 	/** 创建人 */
-	private Integer createBy = 0;
+	private String createBy = null;
 	public static String FIELD_CREATE_BY = "createBy";
 	
 	/** 创建时间 */
@@ -38,7 +38,7 @@ public class BasicEntity implements Serializable,Cloneable {
 	public static String FIELD_CREATE_TIME = "createTime";
 	
 	/** 修改人 */
-	private Integer updateBy = 0;
+	private String updateBy = null;
 	public static String FIELD_UPDATE_BY = "updateBy";
 	
 	/** 修改时间 */
@@ -48,7 +48,7 @@ public class BasicEntity implements Serializable,Cloneable {
 	public BasicEntity() {
 	}
 	
-	public BasicEntity(Long id,Integer createBy, LocalDateTime createTime, Integer updateBy,
+	public BasicEntity(Long id,String createBy, LocalDateTime createTime, String updateBy,
 	                   LocalDateTime updateTime) {
 		this.id = id;
 		this.createBy = createBy;
@@ -65,11 +65,11 @@ public class BasicEntity implements Serializable,Cloneable {
 		this.id = id;
 	}
 	
-	public Integer getCreateBy() {
+	public String getCreateBy() {
 		return createBy;
 	}
 	
-	public void setCreateBy(Integer createBy) {
+	public void setCreateBy(String createBy) {
 		this.createBy = createBy;
 	}
 	
@@ -81,11 +81,11 @@ public class BasicEntity implements Serializable,Cloneable {
 		this.createTime = createTime;
 	}
 	
-	public Integer getUpdateBy() {
+	public String getUpdateBy() {
 		return updateBy;
 	}
 	
-	public void setUpdateBy(Integer updateBy) {
+	public void setUpdateBy(String updateBy) {
 		this.updateBy = updateBy;
 	}
 	
