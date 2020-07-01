@@ -20,56 +20,41 @@ import java.util.Arrays;
 @Builder
 public class BasicEntity implements Serializable,Cloneable {
 	
-    /**
-     * @Fields serialVersionUID : TODO
-     */
-    private static final long serialVersionUID = 1L;
-    /** 唯一标识 */
-    @TableId
-    private Long id = 0L ;
-    public static String FIELD_ID = "id";
-    
-    /** 唯一标识instanceId */
-    private String instId = null;
-    public static String FIELD_INSTANCEID = "instId";
-    
-    /** 创建人 */
-    private Integer createBy = 0;
-    public static String FIELD_CREATE_USER = "createBy";
-    
-    /** 创建时间 */
-    private LocalDateTime createTime = null;
-    public static String FIELD_CREATE_TIME = "createTime";
-    
-    /** 修改人 */
-    private Integer updateBy = 0;
-    public static String FIELD_UPDATE_USER = "updateBy";
-    
-    /** 修改时间 */
-    private LocalDateTime updateTime = null;
-    public static String FIELD_UPDATE_TIME = "updateTime";
-    
-    /** 是否删除:1是,0否 */
-    private Integer disabled = 0;
-    public static String FIELD_DISABLED = "disabled";
-    
-    /** 描述 */
-    private String infoDesc = null;
-    public static String FIELD_INFO_DESC = "infoDesc";
+	/**
+	 * @Fields serialVersionUID : TODO
+	 */
+	private static final long serialVersionUID = 1L;
+	/** 唯一标识 */
+	@TableId
+	private Long id = 0L ;
+	public static String FIELD_ID = "id";
+	
+	/** 创建人 */
+	private Integer createBy = 0;
+	public static String FIELD_CREATE_BY = "createBy";
+	
+	/** 创建时间 */
+	private LocalDateTime createTime = null;
+	public static String FIELD_CREATE_TIME = "createTime";
+	
+	/** 修改人 */
+	private Integer updateBy = 0;
+	public static String FIELD_UPDATE_BY = "updateBy";
+	
+	/** 修改时间 */
+	private LocalDateTime updateTime = null;
+	public static String FIELD_UPDATE_TIME = "updateTime";
 	
 	public BasicEntity() {
 	}
 	
-	public BasicEntity(Long id, String instId, Integer createBy, LocalDateTime createTime, Integer updateBy,
-	                   LocalDateTime updateTime, Integer disabled, String infoDesc) {
+	public BasicEntity(Long id,Integer createBy, LocalDateTime createTime, Integer updateBy,
+	                   LocalDateTime updateTime) {
 		this.id = id;
-		this.instId = instId;
 		this.createBy = createBy;
 		this.createTime = createTime;
 		this.updateBy = updateBy;
 		this.updateTime = updateTime;
-		this.disabled = disabled;
-		this.infoDesc = infoDesc;
 	}
 	
 	public Long getId() {
@@ -78,14 +63,6 @@ public class BasicEntity implements Serializable,Cloneable {
 	
 	public void setId(Long id) {
 		this.id = id;
-	}
-	
-	public String getInstId() {
-		return instId;
-	}
-	
-	public void setInstId(String instId) {
-		this.instId = instId;
 	}
 	
 	public Integer getCreateBy() {
@@ -120,22 +97,6 @@ public class BasicEntity implements Serializable,Cloneable {
 		this.updateTime = updateTime;
 	}
 	
-	public Integer getDisabled() {
-		return disabled;
-	}
-	
-	public void setDisabled(Integer disabled) {
-		this.disabled = disabled;
-	}
-	
-	public String getInfoDesc() {
-		return infoDesc;
-	}
-	
-	public void setInfoDesc(String infoDesc) {
-		this.infoDesc = infoDesc;
-	}
-	
 	/**
 	 * 简易的实体对象.
 	 * @param clazz
@@ -164,8 +125,6 @@ public class BasicEntity implements Serializable,Cloneable {
         BasicEntity entity = null;
         try {
             entity = (BasicEntity) clazz.newInstance();
-            entity.setInstId(UUIDProvider.uuid());
-            entity.setDisabled(Constants.OperateStatus.ENABLED);
             entity.setCreateTime(LocalDateTime.now());
             entity.setUpdateTime(LocalDateTime.now());
             return clazz.cast(entity);

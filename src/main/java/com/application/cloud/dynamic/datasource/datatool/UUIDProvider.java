@@ -12,7 +12,6 @@ import java.util.UUID;
 
 /**
  * UUID生产器
- *
  * @author : 孤狼
  * @NAME: BasicEntity
  * @DESC: BasicEntity 类设计
