@@ -30,6 +30,8 @@
 		<mybatis-plus-boot.version>3.3.2</mybatis-plus-boot.version>
 		<druid-boot.version>1.1.22</druid-boot.version>
 		<aspectjweaver.version>1.9.5</aspectjweaver.version>
+		<jackson-datatype.version>2.11.0</jackson-datatype.version>
+		<mybatis-typehandlers.version>1.0.2</mybatis-typehandlers.version>
 		<hikaricp.version>3.4.5</hikaricp.version>
 		<lombok.version>1.18.12</lombok.version>
 		<p6spy.version>3.8.7</p6spy.version>
@@ -75,13 +77,26 @@
             <version>${mybatis-plus-boot.version}</version>
             <optional>true</optional>
         </dependency>
+		<!--解决LocalDateTime在json序列化时不能转为“yy-MM-dd”的格式-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>${jackson-datatype.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<!--防止dto改成locakdatetime报错-->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-typehandlers-jsr310</artifactId>
+			<version>${mybatis-typehandlers.version}</version>
+			<optional>true</optional>
+		</dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
             <version>${hikaricp.version}</version>
             <optional>true</optional>
         </dependency>
-        
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
