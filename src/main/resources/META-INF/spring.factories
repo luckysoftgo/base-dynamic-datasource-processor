@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.application.cloud.dynamic.datasource.config.DataSourceXConfig,\
+com.application.cloud.dynamic.datasource.config.Swagger2ApiConfig,\
 com.application.cloud.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration

@@ -33,9 +33,11 @@
 		<jackson-datatype.version>2.11.0</jackson-datatype.version>
 		<mybatis-typehandlers.version>1.0.2</mybatis-typehandlers.version>
 		<hikaricp.version>3.4.5</hikaricp.version>
-		<lombok.version>1.18.12</lombok.version>
 		<p6spy.version>3.8.7</p6spy.version>
 		<seata.version>1.2.0</seata.version>
+		<lombok.version>1.18.12</lombok.version>
+		<knife4j.version>2.0.4</knife4j.version>
+		<springfox.version>2.9.2</springfox.version>
 		
 		<!-- 下载需要的 jar  -->
 		<downloadSources>true</downloadSources>
@@ -98,12 +100,6 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
             <groupId>p6spy</groupId>
             <artifactId>p6spy</artifactId>
             <version>${p6spy.version}</version>
@@ -115,6 +111,26 @@
             <version>${seata.version}</version>
             <optional>true</optional>
         </dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>knife4j-spring-boot-starter</artifactId>
+			<version>${knife4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${springfox.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${springfox.version}</version>
+		</dependency>
     </dependencies>
 
     <build>
