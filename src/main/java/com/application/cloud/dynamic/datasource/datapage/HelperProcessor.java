@@ -118,7 +118,6 @@ public class HelperProcessor implements Serializable {
 			this.calcPage();
 			this.judgePageBoudary();
 		}
-		
 	}
 	
 	/**
