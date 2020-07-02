@@ -29,15 +29,20 @@ public class PageQuery<T> extends LinkedHashMap<String, Object> {
 		//分页参数默认值
 		Integer currentPage = 1;
 		Integer pageSize = 10;
-		if(params.get(Constant.MYBATIS_PLUS_PAGE) != null){
-			pageSize = Integer.parseInt(Objects.toString(params.get(Constant.MYBATIS_PLUS_PAGE),"0"));
+		if(params.get(Constant.PAGE_SIZE) != null){
+			pageSize = Integer.parseInt(Objects.toString(params.get(Constant.PAGE_SIZE),"0"));
+		}
+		if(params.get(Constant.PAGE_NUM) != null){
+			currentPage = Integer.parseInt(Objects.toString(params.get(Constant.PAGE_NUM),"0"));
 		}
 		if(params.get(Constant.MYBATIS_PLUS_LIMIT) != null){
-			currentPage = Integer.parseInt(Objects.toString(params.get(Constant.MYBATIS_PLUS_LIMIT),"0"));
+			pageSize = Integer.parseInt(Objects.toString(params.get(Constant.MYBATIS_PLUS_LIMIT),"0"));
 		}
-		this.page = pageSize;
-		this.limit = currentPage;
-
+		if(params.get(Constant.MYBATIS_PLUS_PAGE) != null){
+			currentPage = Integer.parseInt(Objects.toString(params.get(Constant.MYBATIS_PLUS_PAGE),"0"));
+		}
+		this.page = currentPage;
+		this.limit = pageSize ;
 		//分页参数
 		Integer offset = ((currentPage - 1) * pageSize);
 		this.put(Constant.MYBATIS_PLUS_PAGE,currentPage);
