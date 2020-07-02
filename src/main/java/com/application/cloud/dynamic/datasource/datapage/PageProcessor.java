@@ -1,6 +1,7 @@
 package com.application.cloud.dynamic.datasource.datapage;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  * @NAME: PageProcessor
  * @DESC: PageProcessor 实现设计
  **/
+@Data
 public class PageProcessor implements Serializable {
 
 	private static final long serialVersionUID = 1L;

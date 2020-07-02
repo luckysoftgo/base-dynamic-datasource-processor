@@ -3,6 +3,7 @@ package com.application.cloud.dynamic.datasource.datapage;
 import com.github.pagehelper.Page;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -13,6 +14,7 @@ import java.util.List;
  * @NAME: HelperProcessor
  * @DESC: PageInfoProcessor类设计
  **/
+@Data
 @ApiModel(description="pagehelper分页返回结果集")
 public class HelperProcessor implements Serializable {
 	
