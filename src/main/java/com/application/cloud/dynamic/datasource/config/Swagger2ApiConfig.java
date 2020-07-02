@@ -1,6 +1,8 @@
 package com.application.cloud.dynamic.datasource.config;
 
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
+import io.swagger.annotations.Api;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -25,6 +27,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @EnableKnife4j
 @Import(BeanValidatorPluginsConfiguration.class)
+@ConditionalOnProperty(prefix = "swagger2.config", name = "swagger-ui-open", havingValue = "true")
 public class Swagger2ApiConfig {
 	
 	@Bean
@@ -36,7 +39,7 @@ public class Swagger2ApiConfig {
 				.apiInfo(apiInfo())
 				.select()
 				// 指定生成api文档的包
-				.apis(RequestHandlerSelectors.basePackage("com.application.cloud"))
+				.apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
 				// 指定所有路径
 				.paths(PathSelectors.any())
 				.build()
