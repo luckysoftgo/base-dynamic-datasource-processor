@@ -26,7 +26,7 @@ public class IdEntity implements Serializable,Cloneable {
 	private static final long serialVersionUID = 1L;
 	/** 唯一标识 */
 	@TableId
-	private Long id = 0L ;
+	private Long id = null ;
 	public static String FIELD_ID = "id";
 	
 	public IdEntity() {
