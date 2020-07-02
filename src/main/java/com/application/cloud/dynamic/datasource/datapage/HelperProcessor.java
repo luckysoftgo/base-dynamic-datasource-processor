@@ -1,17 +1,20 @@
 package com.application.cloud.dynamic.datasource.datapage;
+
 import com.github.pagehelper.Page;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+
 /**
  * @author : 孤狼
  * @NAME: HelperProcessor
  * @DESC: PageInfoProcessor类设计
  **/
 @ApiModel(description="pagehelper分页返回结果集")
-public class HelperProcessor<T> {
+public class HelperProcessor implements Serializable {
 	
 	@ApiModelProperty(value = "当前页")
 	private int currentPage;
@@ -52,7 +55,7 @@ public class HelperProcessor<T> {
 	@ApiModelProperty(value = "总记录数")
 	private long totalCount;
 	@ApiModelProperty(value = "结果列表数据")
-	private List<T> dataList;
+	private List<?> dataList;
 	
 	/**
 	 * 构造函数
@@ -68,7 +71,7 @@ public class HelperProcessor<T> {
 	 * 构造函数
 	 * @param list
 	 */
-	public HelperProcessor(List<T> list) {
+	public HelperProcessor(List<?> list) {
 		this(list, 8);
 		this.dataList = list;
 		if (list instanceof Page) {
@@ -82,7 +85,7 @@ public class HelperProcessor<T> {
 	 * 构造函数
 	 * @param list
 	 */
-	public HelperProcessor(List<T> list, int navigatePages) {
+	public HelperProcessor(List<?> list, int navigatePages) {
 		this.firstPage = false;
 		this.lastPage = false;
 		this.hasPreviousPage = false;
