@@ -70,7 +70,7 @@ public class QueryWhereProcessor<T> {
 	 * @return
 	 */
 	public static Wrapper invoke(Object object) {
-		QueryWrapper wrapper = new QueryWrapper(object);
+		QueryWrapper wrapper = new QueryWrapper();
 		excute(object, wrapper);
 		// 获取
 		return wrapper;
@@ -83,7 +83,8 @@ public class QueryWhereProcessor<T> {
 	 * @return
 	 */
 	public static Wrapper invoke(Object object,String... columns) {
-		QueryWrapper wrapper = new QueryWrapper(object,columns);
+		QueryWrapper wrapper = new QueryWrapper();
+		wrapper.select(columns);
 		excute(object, wrapper);
 		// 获取
 		return wrapper;
