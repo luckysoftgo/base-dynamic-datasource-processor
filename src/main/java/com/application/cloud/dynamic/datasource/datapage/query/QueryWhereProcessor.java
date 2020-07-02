@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * @author : 孤狼
  * @NAME: QueryWhereProcessor
- * @DESC: QueryWhereProcessor类设计
+ * @DESC: 自定义查询处理类
  **/
 @Data
 public class QueryWhereProcessor<T> {
