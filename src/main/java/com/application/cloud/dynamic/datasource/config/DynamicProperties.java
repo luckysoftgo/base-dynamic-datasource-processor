@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @author : 孤狼
  * @NAME: DynamicProperties
- * @DESC: DynamicProperties类设计
+ * @DESC: Dynamic 参数配置类设计
  **/
 @Data
 @ConfigurationProperties(prefix = "dynamic.config")
