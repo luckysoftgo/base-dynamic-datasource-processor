@@ -1,5 +1,7 @@
 package com.application.cloud.dynamic.datasource.config;
 
+import com.alibaba.druid.support.http.StatViewServlet;
+import com.alibaba.druid.support.http.WebStatFilter;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -10,6 +12,8 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -67,6 +71,37 @@ public class DataSourceXConfig {
 	@Bean
 	public PaginationInterceptor paginationInterceptor() {
 		return new PaginationInterceptor();
+	}
+	
+	/**
+	 * druid 访问配置.
+	 * @return
+	 */
+	@Bean
+	public ServletRegistrationBean druidStatViewServlet() {
+		ServletRegistrationBean registrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
+		// IP白名单 (没有配置或者为空，则允许所有访问)
+		registrationBean.addInitParameter("allow", "127.0.0.1");
+		// IP黑名单 (存在共同时，deny优先于allow)
+		registrationBean.addInitParameter("deny", "");
+		//用户名/密码
+		registrationBean.addInitParameter("loginUsername", "admin");
+		registrationBean.addInitParameter("loginPassword", "druid");
+		//禁用HTML页面上的“Reset All”功能
+		registrationBean.addInitParameter("resetEnable", "false");
+		return registrationBean;
+	}
+	
+	/**
+	 * druid 资源配置.
+	 * @return
+	 */
+	@Bean
+	public FilterRegistrationBean druidWebStatViewFilter() {
+		FilterRegistrationBean registrationBean = new FilterRegistrationBean(new WebStatFilter());
+		registrationBean.addInitParameter("urlPatterns", "/*");
+		registrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*");
+		return registrationBean;
 	}
 	
 }
