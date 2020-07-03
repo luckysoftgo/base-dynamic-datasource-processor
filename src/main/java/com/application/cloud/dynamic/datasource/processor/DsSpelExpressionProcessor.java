@@ -30,7 +30,6 @@ public class DsSpelExpressionProcessor extends DsProcessor {
      * 解析上下文的模板
      * 对于默认不设置的情况下,从参数中取值的方式 #param1
      * 设置指定模板 ParserContext.TEMPLATE_EXPRESSION 后的取值方式: #{#param1}
-     * issues: https://github.com/baomidou/dynamic-datasource-spring-boot-starter/issues/199
      */
     private ParserContext parserContext = new ParserContext() {
 

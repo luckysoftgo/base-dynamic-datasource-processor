@@ -27,7 +27,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @EnableKnife4j
 @Import(BeanValidatorPluginsConfiguration.class)
-@ConditionalOnProperty(prefix = "swagger2.config", name = "swagger-ui-open", havingValue = "true")
+@ConditionalOnProperty(prefix = "dynamic.config", name = "swagger-ui-open", havingValue = "true")
 public class Swagger2ApiConfig {
 	
 	@Bean

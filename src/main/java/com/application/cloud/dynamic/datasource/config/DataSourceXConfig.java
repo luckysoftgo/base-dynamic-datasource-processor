@@ -11,12 +11,15 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -29,7 +32,12 @@ import java.time.format.DateTimeFormatter;
  * @DESC: MybatisPageConfig类设计
  **/
 @Configuration
+@EnableConfigurationProperties(DynamicProperties.class)
 public class DataSourceXConfig {
+	
+	@Autowired
+	private DynamicProperties properties;
+	
 	/**
 	 * DateTime格式化字符串
 	 */
@@ -81,12 +89,25 @@ public class DataSourceXConfig {
 	public ServletRegistrationBean druidStatViewServlet() {
 		ServletRegistrationBean registrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
 		// IP白名单 (没有配置或者为空，则允许所有访问)
-		registrationBean.addInitParameter("allow", "127.0.0.1");
+		if (StringUtils.isEmpty(properties.getDruidAllowIp())){
+			registrationBean.addInitParameter("allow", "");
+		}else {
+			registrationBean.addInitParameter("allow", properties.getDruidAllowIp());
+		}
 		// IP黑名单 (存在共同时，deny优先于allow)
-		registrationBean.addInitParameter("deny", "");
+		if (StringUtils.isEmpty(properties.getDruidDenyIp())){
+			registrationBean.addInitParameter("deny", "");
+		}else {
+			registrationBean.addInitParameter("deny", properties.getDruidDenyIp());
+		}
 		//用户名/密码
-		registrationBean.addInitParameter("loginUsername", "admin");
-		registrationBean.addInitParameter("loginPassword", "druid");
+		if (StringUtils.isEmpty(properties.getDruidName())){
+			registrationBean.addInitParameter("loginUsername", "admin");
+			registrationBean.addInitParameter("loginPassword", "druid");
+		}else{
+			registrationBean.addInitParameter("loginUsername", properties.getDruidName());
+			registrationBean.addInitParameter("loginPassword", properties.getDruidPass());
+		}
 		//禁用HTML页面上的“Reset All”功能
 		registrationBean.addInitParameter("resetEnable", "false");
 		return registrationBean;
